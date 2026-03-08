@@ -8,81 +8,112 @@
 <head>
     <title>Note Finale</title>
     <link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
 
-<div class="container">
+    <div class="sidebar">
 
-    <h1>Calcul Note Finale</h1>
-    <p class="etu">ETU3510</p>
+        <h2>ETU3510</h2>
 
-    <form method="post" action="/final">
+        <a href="/final" class="active">Note finale</a>
+        <a href="/notes">Notes</a>
+        <a href="/parametres">Parametres</a>
 
-        <label>Matiere</label>
-        <select name="matiere">
-            <%
+    </div>
+
+    <div class="main">
+
+    <div class="container">
+
+        <h1>Calcul Note Finale</h1>
+
+        <form method="post" action="/final">
+
+            <div class="form-group">
+
+            <label>Matiere</label>
+
+                <select name="matiere">
+                <%
                 List<Matiere> matieres = (List<Matiere>) request.getAttribute("matieres");
                 if(matieres != null){
-                    for(Matiere m : matieres){
-            %>
-                <option value="<%=m.getId()%>"><%=m.getNom()%></option>
-            <%
-                    }
+                for(Matiere m : matieres){
+                    %>
+                    <option value="<%=m.getId()%>"><%=m.getNom()%></option>
+                    <%
                 }
-            %>
-        </select>
+                }
+                %>
 
-        <label>Candidat</label>
-        <select name="candidat">
-            <%
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Candidat</label>
+
+                <select name="candidat">
+
+                <%
                 List<Candidat> candidats = (List<Candidat>) request.getAttribute("candidats");
+
                 if(candidats != null){
-                    for(Candidat c : candidats){
-            %>
-                <option value="<%=c.getId()%>"><%=c.getNom()%></option>
-            <%
-                    }
+                for(Candidat c : candidats){
+                    %>
+                    <option value="<%=c.getId()%>"><%=c.getNom()%></option>
+                    <%
                 }
-            %>
-        </select>
+                }
+                %>
 
-        <button type="submit">Calculer</button>
+                </select>
 
-    </form>
+            </div>
 
+            <button class="btn btn-primary">Calculer</button>
 
+        </form>
     <%
-        NoteFinal nf = (NoteFinal) request.getAttribute("noteFinal");
 
-        if(nf != null){
-    %>
+    NoteFinal nf = (NoteFinal) request.getAttribute("noteFinal");
 
-        <div class="result">
+    if(nf != null){
+        %>
+        <br>
+        <br>
+        <div class="result-card">
+            <div class="result-header">
+                <h2>Note finale</h2>
+                <div class="result-score">
+                    <%= nf.getNote() %>
+                </div>
+            </div>
 
-            <h2>Note Finale</h2>
+            <div class="result-info">
 
-            <p>
-                <strong>Candidat :</strong>
-                <%= nf.getCandidat().getNom() %>
-            </p>
+                <div class="result-item">
+                    <span class="label">Candidat</span>
+                    <span class="value"><%= nf.getCandidat().getNom() %></span>
+                </div>
 
-            <p>
-                <strong>Matiere :</strong>
-                <%= nf.getMatiere().getNom() %>
-            </p>
+                <div class="result-item">
+                    <span class="label">Matiere</span>
+                    <span class="value"><%= nf.getMatiere().getNom() %></span>
+                </div>
 
-            <p class="note">
-                <%= nf.getNote() %>
-            </p>
+            </div>
 
         </div>
-
-    <%
-        }
+        <%
+    }
     %>
 
-</div>
+    </div>
+    </div>
 
 </body>
 </html>

@@ -5,7 +5,6 @@ import com.example.correction.model.Matiere;
 import com.example.correction.model.Note;
 import com.example.correction.model.NoteFinal;
 import com.example.correction.model.Parametre;
-import com.example.correction.model.Note;
 import com.example.correction.repository.NoteFinalRepository;
 import org.springframework.stereotype.Service;
 

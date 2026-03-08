@@ -7,6 +7,7 @@ D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repo
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Correcteur.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\MatiereService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Resolution.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\dto\Other.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\CorrecteurService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\NoteService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repository\NoteRepository.java
@@ -16,6 +17,7 @@ D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\mode
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\OperateurService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Operateur.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repository\MatiereRepository.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\controller\FinalController.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repository\OperateurRepository.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\ParametreService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Note.java

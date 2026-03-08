@@ -43,6 +43,11 @@ public class Note {
 
 
 
+    public Note() {
+    }
+
+
+
     public Long getId() {
         return id;
     }

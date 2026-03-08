@@ -36,3 +36,17 @@ INSERT INTO t_note (id_candidat, id_matiere, id_correcteur, note) VALUES
 (2,2,1,8),
 (2,2,2,9),
 (2,2,3,13);
+
+
+-- INSERT INTO t_note (id_candidat, id_matiere, id_correcteur, note) VALUES
+-- -- Candidat 1
+-- (1,2,1,18),
+-- (1,2,2,18),
+-- (1,2,3,18),
+-- (1,2,4,18);
+
+-- INSERT INTO t_note (id_candidat, id_matiere, id_correcteur, note) VALUES
+-- -- Candidat 2
+-- (2,1,1,14.5),
+-- (2,1,2,12.5),
+-- (2,1,4,15);

@@ -38,9 +38,15 @@ public class ParametreService {
         repository.deleteById(id);
     }
 
-    Parametre getParametre(Matiere matiere, double diff){
+    Parametre getParametreInit(Matiere matiere, double diff){
 
-        List<Parametre> params = repository.findByMatiere(matiere);
+        if (diff == 0) {
+            Parametre defaut = new Parametre();
+            defaut.setResolution(resolutionService.findByNom("moyenne"));
+            return defaut;
+        }
+
+        List<Parametre> params = repository.findByMatiereOrderByDiffAsc(matiere);
     
         for (Parametre p : params) {
     
@@ -55,6 +61,37 @@ public class ParametreService {
         Parametre defaut = new Parametre();
         defaut.setResolution(resolutionService.findByNom("moyenne"));
 
+        return defaut;
+    }
+
+    Parametre getParametre(Matiere matiere, double diff){
+        if (diff == 0) {
+            Parametre defaut = new Parametre();
+            defaut.setResolution(resolutionService.findByNom("moyenne"));
+            return defaut;
+        }
+        List<Parametre> params = repository.findByMatiereOrderByDiffAsc(matiere);
+        Parametre meilleur = null;
+        for (Parametre p : params) {
+            double seuil = p.getDiff();
+            String operateur = p.getOperateur().getOperateur();
+            if (Other.eval(diff, operateur, seuil)) {
+                if (meilleur == null) {
+                    meilleur = p;
+                } else {
+                    double distanceActuelle = Math.abs(diff - seuil);
+                    double distanceMeilleur = Math.abs(diff - meilleur.getDiff());
+                    if (distanceActuelle < distanceMeilleur) {
+                        meilleur = p;
+                    }
+                }
+            }
+        }
+        if (meilleur != null) {
+            return meilleur;
+        }
+        Parametre defaut = new Parametre();
+        defaut.setResolution(resolutionService.findByNom("moyenne"));
         return defaut;
     }
 }

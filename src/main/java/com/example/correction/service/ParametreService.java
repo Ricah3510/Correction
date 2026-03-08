@@ -15,11 +15,17 @@ public class ParametreService {
     private final ParametreRepository repository;
 
     private final ResolutionService resolutionService;
+    private final MatiereService matiereService;
+    private final OperateurService operateurService;
 
     public ParametreService(ParametreRepository repository,
-                            ResolutionService resolutionService) {
+                            ResolutionService resolutionService,
+                            MatiereService matiereService,
+                            OperateurService operateurService) {
         this.repository = repository;
         this.resolutionService = resolutionService;
+        this.matiereService = matiereService;
+        this.operateurService = operateurService;
     }
 
     public List<Parametre> findAll(){
@@ -93,5 +99,23 @@ public class ParametreService {
         Parametre defaut = new Parametre();
         defaut.setResolution(resolutionService.findByNom("moyenne"));
         return defaut;
+    }
+
+    public void save(Long id, Long matiereId, Long operateurId, double diff, Long resolutionId){
+
+        Parametre p;
+    
+        if(id != null){
+            p = repository.findById(id).get();
+        }else{
+            p = new Parametre();
+        }
+    
+        p.setMatiere(matiereService.findById(matiereId));
+        p.setOperateur(operateurService.findById(operateurId));
+        p.setResolution(resolutionService.findById(resolutionId));
+        p.setDiff(diff);
+    
+        repository.save(p);
     }
 }

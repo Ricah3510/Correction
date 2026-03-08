@@ -1,6 +1,7 @@
 package com.example.correction.service;
 
 import com.example.correction.model.Candidat;
+import com.example.correction.model.Correcteur;
 import com.example.correction.model.Matiere;
 import com.example.correction.model.Note;
 import com.example.correction.repository.NoteRepository;
@@ -12,9 +13,19 @@ import java.util.List;
 public class NoteService {
 
     private final NoteRepository repository;
+    private final CandidatService candidatService;
+    private final MatiereService matiereService;
+    private final CorrecteurService correcteurService;
 
-    public NoteService(NoteRepository repository) {
+    public NoteService(
+        NoteRepository repository,
+        CandidatService candidatService,
+        MatiereService matiereService,
+        CorrecteurService correcteurService) {
         this.repository = repository;
+        this.candidatService = candidatService;
+        this.matiereService = matiereService;
+        this.correcteurService = correcteurService;
     }
 
     public List<Note> findAll(){
@@ -57,5 +68,23 @@ public class NoteService {
         }
         
         return diff;
+    }
+
+    public void save(Long id, Long candidatId, Long matiereId, Long correcteurId, double value){
+
+        Note note;
+    
+        if(id != null){
+            note = repository.findById(id).get();
+        }else{
+            note = new Note();
+        }
+    
+        note.setCandidat(candidatService.findById(candidatId));
+        note.setMatiere(matiereService.findById(matiereId));
+        note.setCorrecteur(correcteurService.findById(correcteurId));
+        note.setNote(value);
+    
+        repository.save(note);
     }
 }

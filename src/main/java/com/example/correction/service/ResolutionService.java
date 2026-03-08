@@ -27,6 +27,10 @@ public class ResolutionService {
         return repository.save(Resolution);
     }
 
+    public Resolution findByNom(String nom){
+        return repository.findByNom(nom);
+    }
+
     public void delete(Long id){
         repository.deleteById(id);
     }

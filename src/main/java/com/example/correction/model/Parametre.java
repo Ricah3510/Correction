@@ -24,4 +24,44 @@ public class Parametre {
     @JoinColumn(name = "id_resolution")
     private Resolution resolution;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Matiere getMatiere() {
+        return matiere;
+    }
+
+    public void setMatiere(Matiere matiere) {
+        this.matiere = matiere;
+    }
+
+    public double getDiff() {
+        return diff;
+    }
+
+    public void setDiff(double diff) {
+        this.diff = diff;
+    }
+
+    public Operateur getOperateur() {
+        return operateur;
+    }
+
+    public void setOperateur(Operateur operateur) {
+        this.operateur = operateur;
+    }
+
+    public Resolution getResolution() {
+        return resolution;
+    }
+
+    public void setResolution(Resolution resolution) {
+        this.resolution = resolution;
+    }
+
 }

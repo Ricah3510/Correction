@@ -1,5 +1,6 @@
 package com.example.correction.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -70,7 +71,7 @@ public class ParametreService {
         return defaut;
     }
 
-    Parametre getParametre(Matiere matiere, double diff){
+    Parametre getParametre0(Matiere matiere, double diff){
         if (diff == 0) {
             Parametre defaut = new Parametre();
             defaut.setResolution(resolutionService.findByNom("moyenne"));
@@ -101,6 +102,33 @@ public class ParametreService {
         return defaut;
     }
 
+    Parametre getParametre(Matiere matiere, double diff){
+        List<Parametre> paramsPossible = getParametrePossible(matiere, diff);
+        return getBestParametre(paramsPossible, diff);
+    }
+    List<Parametre> getParametrePossible(Matiere matiere, double diff){
+        List<Parametre> retour = new ArrayList<>();
+        List<Parametre> params = repository.findByMatiereOrderByDiffAsc(matiere);
+        for (Parametre p : params) {
+            double seuil = p.getDiff();
+            String operateur = p.getOperateur().getOperateur();
+            if (Other.eval(diff, operateur, seuil)) {
+                retour.add(p);
+            }
+        }
+        return retour;
+    }
+    Parametre getBestParametre(List<Parametre> parametres, double diff){
+        Parametre bestPamatre = parametres.get(0);
+        for(Parametre p : parametres){
+            double distanceActuelle = Math.abs(diff - p.getDiff());
+            double distanceMeilleur = Math.abs(diff - bestPamatre.getDiff());
+            if(distanceActuelle < distanceMeilleur){
+                bestPamatre = p;
+            }
+        }
+        return bestPamatre;
+    }
     public void save(Long id, Long matiereId, Long operateurId, double diff, Long resolutionId){
 
         Parametre p;

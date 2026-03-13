@@ -19,33 +19,15 @@ INSERT INTO t_resolution (nom) VALUES
 
 INSERT INTO t_operateur (operateur) VALUES
 ('<'),
-('>');
+('<='),
+('>'),
+('>=');
 
 INSERT INTO t_parametre (id_matiere, diff, id_operateur, id_resolution) VALUES
-(1, 5, 1, 2),
-(1, 5, 2, 1),
-(2, 4, 1, 2),
-(2, 4, 2, 1);
+(1, 5, 4, 2),
+(1, 8, 1, 1);
 
 INSERT INTO t_note (id_candidat, id_matiere, id_correcteur, note) VALUES
 -- Candidat 1
-(1,1,1,7.5),
-(1,1,2,6),
-
--- Candidat 2
-(2,2,1,8),
-(2,2,2,9),
-(2,2,3,13);
-
--- INSERT INTO t_note (id_candidat, id_matiere, id_correcteur, note) VALUES
--- -- Candidat 1
--- (1,2,1,18),
--- (1,2,2,18),
--- (1,2,3,18),
--- (1,2,4,18);
-
--- INSERT INTO t_note (id_candidat, id_matiere, id_correcteur, note) VALUES
--- -- Candidat 2
--- (2,1,1,14.5),
--- (2,1,2,12.5),
--- (2,1,4,15);
+(1,1,1,10),
+(1,1,2,17);

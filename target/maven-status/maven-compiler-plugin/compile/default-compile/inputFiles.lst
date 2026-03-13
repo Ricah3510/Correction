@@ -15,6 +15,8 @@ D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\serv
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Parametre.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Candidat.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\OperateurService.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\controller\NoteController.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\controller\ParametreController.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Operateur.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repository\MatiereRepository.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\controller\FinalController.java

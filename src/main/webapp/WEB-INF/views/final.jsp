@@ -27,6 +27,7 @@
 
     <div class="container">
 
+        <h1 class ="etu"> ETU3510</h1>
         <h1>Calcul Note Finale</h1>
 
         <form method="post" action="/final">

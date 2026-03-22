@@ -140,9 +140,9 @@ h1{
 }
 
 .etu{
-    color:var(--color-text-muted);
+    /* color:var(--color-text-muted); */
     margin-bottom:25px;
-    font-size:14px;
+    font-size:80px;
 }
 
 

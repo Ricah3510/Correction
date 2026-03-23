@@ -3,6 +3,7 @@ package com.example.forage.service;
 import com.example.forage.model.*;
 import com.example.forage.repository.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -25,24 +26,23 @@ public class DemandeService {
         this.statusRepository = statusRepository;
     }
 
+    @Transactional
     public Demande save(Demande demande, Integer clientId) {
-
-        Client client = clientRepository.findById(clientId)
-                .orElseThrow(() -> new RuntimeException("Client not found"));
-
+    
+        Client client = clientRepository.findById(clientId).orElse(null);
+    
         demande.setClient(client);
         Demande savedDemande = demandeRepository.save(demande);
-
-        Status statusInitial = statusRepository.findById(1)
-                .orElseThrow(() -> new RuntimeException("Status not found"));
-
+    
+        Status statusInitial = statusRepository.findById(1).orElse(null);
+    
         DemandeStatus ds = new DemandeStatus();
         ds.setDemande(savedDemande);
         ds.setStatus(statusInitial);
         ds.setDate(new Date());
-
+    
         demandeStatusRepository.save(ds);
-
+    
         return savedDemande;
     }
 

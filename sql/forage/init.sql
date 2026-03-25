@@ -1,10 +1,11 @@
 INSERT INTO t_type (libelle) VALUES
 ('Etude'),
-('Forage'),
-('Analyse');
+('Forage');
 
 INSERT INTO t_status (libelle) VALUES
-('Etude en attente'),
+('Demande cree'),
+('Devis etude terminee'),
+('Devis forage terminee'),
 ('Etude commencee'),
 ('Etude terminee'),
 ('Forage commence'),

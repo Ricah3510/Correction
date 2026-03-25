@@ -27,7 +27,7 @@ public class Devis {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @OneToMany(mappedBy = "devis", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "devis", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DetailsDevis> detailsDeviss;
 
     public Devis() {}

@@ -17,7 +17,11 @@ public class DetailsDevis {
 
     private String libelle;
 
-    private BigDecimal montant;
+    @Column(nullable = false, precision = 30, scale = 2)
+    private BigDecimal qte;
+    
+    @Column(nullable = false, precision = 30, scale = 2)
+    private BigDecimal pu;
 
     public DetailsDevis() {}
 
@@ -45,12 +49,25 @@ public class DetailsDevis {
         this.libelle = libelle;
     }
 
-    public BigDecimal getMontant() {
-        return montant;
+    public BigDecimal getQte() {
+        return qte;
     }
 
-    public void setMontant(BigDecimal montant) {
-        this.montant = montant;
+    public void setQte(BigDecimal qte) {
+        this.qte = qte;
+    }
+
+    public BigDecimal getPu() {
+        return pu;
+    }
+
+    public void setPu(BigDecimal pu) {
+        this.pu = pu;
+    }
+
+    public BigDecimal getMontant() {
+        if (qte == null || pu == null) return BigDecimal.ZERO;
+        return qte.multiply(pu);
     }
 
     

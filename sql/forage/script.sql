@@ -1,3 +1,5 @@
+\c postgres;
+DROP DATABASE IF EXISTS db_forage;
 CREATE DATABASE db_forage;
 \c db_forage;
 
@@ -25,7 +27,7 @@ CREATE TABLE t_devis (
     id SERIAL PRIMARY KEY,
     id_demande INT NOT NULL,
     id_type INT NOT NULL,
-    montant_total NUMERIC(15,2) DEFAULT 0,
+    montant_total NUMERIC(30,2) DEFAULT 0,
     date DATE NOT NULL,
     FOREIGN KEY (id_demande) REFERENCES t_demande(id) ON DELETE CASCADE,
     FOREIGN KEY (id_type) REFERENCES t_type(id)
@@ -35,7 +37,9 @@ CREATE TABLE t_details_devis (
     id SERIAL PRIMARY KEY,
     id_devis INT NOT NULL,
     libelle VARCHAR(255),
-    montant NUMERIC(15,2) NOT NULL,
+    qte NUMERIC(30,2) NOT NULL,
+    pu NUMERIC(30,2) NOT NULL,
+
     FOREIGN KEY (id_devis) REFERENCES t_devis(id) ON DELETE CASCADE
 );
 

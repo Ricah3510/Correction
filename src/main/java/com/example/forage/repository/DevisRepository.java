@@ -8,5 +8,5 @@ import java.util.List;
 public interface DevisRepository extends JpaRepository<Devis, Integer> {
 
     List<Devis> findByDemandeId(Integer demandeId);
-
+    List<Devis> findByDemandeIdAndTypeId(Integer demandeId, Integer typeId);
 }

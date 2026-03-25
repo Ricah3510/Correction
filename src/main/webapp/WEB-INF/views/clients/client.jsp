@@ -14,6 +14,9 @@
             <h2>FORAGE</h2>
             <a href="/clients" class="active">Clients</a>
             <a href="/demandes">Demandes</a>
+            <a href="/devis">Devis</a>
+            <a href="/devis/search">Voir Devis</a>
+
         </div>
 
         <div class="main">

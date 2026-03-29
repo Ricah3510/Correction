@@ -29,12 +29,15 @@ public class DemandeService {
     @Transactional
     public Demande save(Demande demande, Integer clientId) {
     
-        Client client = clientRepository.findById(clientId).orElse(null);
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new RuntimeException("Client not found"));
     
         demande.setClient(client);
+    
         Demande savedDemande = demandeRepository.save(demande);
     
-        Status statusInitial = statusRepository.findById(1).orElse(null);
+        Status statusInitial = statusRepository.findById(1)
+                .orElseThrow(() -> new RuntimeException("Status not found"));
     
         DemandeStatus ds = new DemandeStatus();
         ds.setDemande(savedDemande);
@@ -80,5 +83,31 @@ public class DemandeService {
 
     public Demande update(Demande demande) {
         return demandeRepository.save(demande);
+    }
+
+    public void addStatusByLibelle(Integer demandeId, String libelle) {
+
+        Demande demande = demandeRepository.findById(demandeId)
+                .orElseThrow(() -> new RuntimeException("Demande not found"));
+    
+        Status status = statusRepository.findByLibelle(libelle);
+    
+        if (status == null) {
+            throw new RuntimeException("Status not found : " + libelle);
+        }
+    
+        DemandeStatus last = demandeStatusRepository
+                .findTopByDemandeIdOrderByDateDesc(demandeId);
+    
+        if (last != null && last.getStatus().getId().equals(status.getId())) {
+            return;
+        }
+    
+        DemandeStatus ds = new DemandeStatus();
+        ds.setDemande(demande);
+        ds.setStatus(status);
+        ds.setDate(new Date());
+    
+        demandeStatusRepository.save(ds);
     }
 }

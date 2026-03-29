@@ -1,6 +1,7 @@
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\ResolutionService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\ForageApplication.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Matiere.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\service\DevisService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repository\CorrecteurRepository.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repository\NoteFinalRepository.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repository\ResolutionRepository.java
@@ -9,7 +10,9 @@ D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\serv
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Resolution.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\service\ClientService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\dto\Other.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\service\TypeService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\CorrecteurService.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\controller\DevisController.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repository\NoteRepository.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\NoteFinalService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Parametre.java
@@ -30,6 +33,8 @@ D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\mode
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\service\DemandeStatusService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\controller\HomeController.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\controller\ClientController.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\controller\ApiController.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\service\DetailsDevisService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\CandidatService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\model\Client.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\model\Devis.java

@@ -21,13 +21,13 @@ public class Devis {
     @JoinColumn(name = "id_type", nullable = false)
     private Type type;
 
-    @Column(name = "montant_total")
-    private BigDecimal montantTotal;
+    // @Column(name = "montant_total")
+    // private BigDecimal montantTotal;
 
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @OneToMany(mappedBy = "devis", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "devis", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DetailsDevis> detailsDeviss;
 
     public Devis() {}
@@ -56,13 +56,13 @@ public class Devis {
         this.type = type;
     }
 
-    public BigDecimal getMontantTotal() {
-        return montantTotal;
-    }
+    // public BigDecimal getMontantTotal() {
+    //     return montantTotal;
+    // }
 
-    public void setMontantTotal(BigDecimal montantTotal) {
-        this.montantTotal = montantTotal;
-    }
+    // public void setMontantTotal(BigDecimal montantTotal) {
+    //     this.montantTotal = montantTotal;
+    // }
 
     public Date getDate() {
         return date;
@@ -80,5 +80,15 @@ public class Devis {
         this.detailsDeviss = detailsDeviss;
     }
 
+    public BigDecimal getMontantTotal() {
+        if (detailsDeviss == null) return BigDecimal.ZERO;
     
+        BigDecimal total = BigDecimal.ZERO;
+    
+        for (DetailsDevis d : detailsDeviss) {
+            total = total.add(d.getQte().multiply(d.getPu()));
+        }
+    
+        return total;
+    }
 }

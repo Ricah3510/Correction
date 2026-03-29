@@ -44,17 +44,12 @@
 
             <label>Demande</label>
 
-            <select id="demandeSelect" name="demande" onfocus="showDemandeInfo()" onchange="showDemandeInfo()">
+            <select id="demandeSelect" name="demande" onfocus="loadDemandeDetails()" onchange="loadDemandeDetails()">
                 <%
                 for(Demande d : demandes){
                     %>
-                    <option value="<%=d.getId()%>"
-                            data-client="<%=d.getClient().getNom()%>"
-                            data-lieu="<%=d.getLieu()%>"
-                            data-district="<%=d.getDistrict()%>">
-
+                    <option value="<%=d.getId()%>">
                         Demande <%=d.getId()%>
-
                     </option>
                     <%
                 }

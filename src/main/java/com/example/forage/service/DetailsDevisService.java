@@ -64,7 +64,7 @@ public class DetailsDevisService {
             total = total.add(montant);
         }
 
-        devis.setMontantTotal(total);
+        // devis.setMontantTotal(total);
 
         devisRepo.save(devis);
     }

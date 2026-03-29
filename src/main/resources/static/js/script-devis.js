@@ -42,3 +42,19 @@ function addRow() {
 
     table.appendChild(row);
 }
+
+function loadDemandeDetails() {
+
+    let id = document.getElementById("demandeSelect").value;
+
+    fetch(`/api/demande/${id}`)
+        .then(res => res.json())
+        .then(data => {
+
+            document.getElementById("client").innerText = data.client.nom;
+            document.getElementById("lieu").innerText = data.lieu;
+            document.getElementById("district").innerText = data.district;
+
+        })
+        .catch(err => console.error(err));
+}

@@ -54,7 +54,7 @@ public class DevisService {
         devis.setDemande(demande);
         devis.setType(type);
         devis.setDate(new Date());
-        devis.setMontantTotal(BigDecimal.ZERO);
+        // devis.setMontantTotal(BigDecimal.ZERO);
 
         return devisRepository.save(devis);
     }
@@ -124,10 +124,8 @@ public class DevisService {
 
         if (libelles == null || qtes == null || pus == null ||
             libelles.length != qtes.length || qtes.length != pus.length) {
-
             throw new IllegalArgumentException("Données invalides");
         }
-
 
         Devis devis = create(demandeId, typeId);
 
@@ -151,7 +149,7 @@ public class DevisService {
         }
 
 
-        devis.setMontantTotal(total);
+        // devis.setMontantTotal(total);
         devisRepository.save(devis);
 
 

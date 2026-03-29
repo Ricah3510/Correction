@@ -27,7 +27,6 @@ CREATE TABLE t_devis (
     id SERIAL PRIMARY KEY,
     id_demande INT NOT NULL,
     id_type INT NOT NULL,
-    montant_total NUMERIC(30,2) DEFAULT 0,
     date DATE NOT NULL,
     FOREIGN KEY (id_demande) REFERENCES t_demande(id) ON DELETE CASCADE,
     FOREIGN KEY (id_type) REFERENCES t_type(id)

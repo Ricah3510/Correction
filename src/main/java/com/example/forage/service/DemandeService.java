@@ -85,6 +85,22 @@ public class DemandeService {
         return demandeRepository.save(demande);
     }
 
+    public void addStatusByLibelle(Integer demandeId, String libelle, String observation) {
+
+        Demande demande = demandeRepository.findById(demandeId)
+                .orElseThrow(() -> new RuntimeException("Demande not found"));
+    
+        Status status = statusRepository.findByLibelle(libelle);
+    
+        DemandeStatus ds = new DemandeStatus();
+        ds.setDemande(demande);
+        ds.setStatus(status);
+        ds.setObservation(observation);
+        ds.setDate(new Date());
+    
+        demandeStatusRepository.save(ds);
+    }
+
     public void addStatusByLibelle(Integer demandeId, String libelle) {
 
         Demande demande = demandeRepository.findById(demandeId)
@@ -109,5 +125,9 @@ public class DemandeService {
         ds.setDate(new Date());
     
         demandeStatusRepository.save(ds);
+    }
+
+    public DemandeStatus getCurrentStatus(Integer id) {
+        return demandeStatusRepository.findTopByDemandeIdOrderByDateDesc(id);
     }
 }

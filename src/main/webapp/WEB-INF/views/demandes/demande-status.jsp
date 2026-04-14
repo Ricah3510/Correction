@@ -1,0 +1,79 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="java.util.*" %>
+<%@ page import="com.example.forage.model.*" %>
+
+<%
+    List<Demande> demandes = (List<Demande>) request.getAttribute("demandes");
+    List<Status> statuses = (List<Status>) request.getAttribute("statuses");
+%>
+
+<html>
+<head>
+    <title>Demande Status</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>FORAGE</h2>
+
+    <a href="/clients">Clients</a>
+    <a href="/demandes">Demandes</a>
+    <a href="/devis">Devis</a>
+    <a href="/devis/search">Voir Devis</a>
+    <a href="/status">Status</a>
+    <a href="/demandes/status" class="active">Demande Status</a>
+</div>
+
+<div class="main">
+<div class="container">
+
+<h1>Ajouter Status à une Demande</h1>
+
+<form method="post" action="/demandes/status">
+
+    <div class="form-group">
+        <label>Demande</label>
+        <select name="demande">
+            <%
+            for(Demande d : demandes){
+            %>
+                <option value="<%=d.getId()%>">
+                    Demande <%=d.getId()%> - <%=d.getLieu()%>
+                </option>
+            <%
+            }
+            %>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Status</label>
+        <select name="status">
+            <%
+            for(Status s : statuses){
+            %>
+                <option value="<%=s.getId()%>">
+                    <%=s.getLibelle()%>
+                </option>
+            <%
+            }
+            %>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Observation</label>
+        <input type="text" name="observation">
+    </div>
+
+    <button class="btn btn-primary">Ajouter</button>
+
+</form>
+
+</div>
+</div>
+
+</body>
+</html>

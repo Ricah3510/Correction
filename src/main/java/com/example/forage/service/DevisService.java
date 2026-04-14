@@ -13,7 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -84,6 +88,10 @@ public class DevisService {
         return list;
     }
 
+    public Devis findByDemandeAndTypeUnique(Integer demandeId, Integer typeId) {
+        return devisRepository.findFirstByDemandeIdAndTypeId(demandeId, typeId);
+    }
+
     @Transactional
     public Devis createDevisWithDetails0(
             Integer demandeId,
@@ -121,7 +129,6 @@ public class DevisService {
             BigDecimal[] qtes,
             BigDecimal[] pus) {
 
-
         if (libelles == null || qtes == null || pus == null ||
             libelles.length != qtes.length || qtes.length != pus.length) {
             throw new IllegalArgumentException("Données invalides");
@@ -129,8 +136,7 @@ public class DevisService {
 
         Devis devis = create(demandeId, typeId);
 
-        BigDecimal total = BigDecimal.ZERO;
-
+        // BigDecimal total = BigDecimal.ZERO;
 
         for (int i = 0; i < libelles.length; i++) {
 
@@ -145,22 +151,20 @@ public class DevisService {
 
             detailsDevisRepository.save(d);
 
-            total = total.add(qtes[i].multiply(pus[i]));
+            // total = total.add(qtes[i].multiply(pus[i]));
         }
-
 
         // devis.setMontantTotal(total);
         devisRepository.save(devis);
-
 
         String typeLib = devis.getType().getLibelle();
 
         String statusLibelle = null;
 
         if (typeLib.equalsIgnoreCase("Etude")) {
-            statusLibelle = "Devis etude terminee";
+            statusLibelle = "Devis etude cree";
         } else if (typeLib.equalsIgnoreCase("Forage")) {
-            statusLibelle = "Devis forage terminee";
+            statusLibelle = "Devis forage cree";
         }
 
         if (statusLibelle != null) {
@@ -168,5 +172,73 @@ public class DevisService {
         }
 
         return devis;
+    }
+
+
+    @Transactional
+    public void saveOrUpdateDevis(
+            Integer demandeId,
+            Integer typeId,
+            Integer[] ids,
+            String[] libelles,
+            BigDecimal[] qtes,
+            BigDecimal[] pus) {
+
+        Devis devis = devisRepository
+                .findFirstByDemandeIdAndTypeId(demandeId, typeId);
+
+        if (devis == null) {
+            devis = create(demandeId, typeId);
+        }
+
+        List<DetailsDevis> existing = detailsDevisRepository.findByDevisId(devis.getId());
+
+        Map<Integer, DetailsDevis> map = new HashMap<>();
+        for (DetailsDevis d : existing) {
+            map.put(d.getId(), d);
+        }
+
+        Set<Integer> idsFromForm = new HashSet<>();
+
+        for (int i = 0; i < libelles.length; i++) {
+
+            if (libelles[i] == null || libelles[i].trim().isEmpty()) continue;
+            if (qtes[i] == null || pus[i] == null) continue;
+
+            Integer id = (ids[i] != null) ? ids[i] : null;
+
+            if (id != null && map.containsKey(id)) {
+
+                // UPDATE
+                DetailsDevis d = map.get(id);
+                d.setLibelle(libelles[i]);
+                d.setQte(qtes[i]);
+                d.setPu(pus[i]);
+
+                detailsDevisRepository.save(d);
+
+                idsFromForm.add(id);
+
+            } else {
+
+                // INSERT
+                DetailsDevis d = new DetailsDevis();
+                d.setDevis(devis);
+                d.setLibelle(libelles[i]);
+                d.setQte(qtes[i]);
+                d.setPu(pus[i]);
+
+                detailsDevisRepository.save(d);
+            }
+        }
+        for (DetailsDevis d : existing) {
+            if (!idsFromForm.contains(d.getId())) {
+                detailsDevisRepository.delete(d);
+            }
+        }
+    }
+
+    public BigDecimal getCA(){
+        return devisRepository.getChiffreAffaire();
     }
 }

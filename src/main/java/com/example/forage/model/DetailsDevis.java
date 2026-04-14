@@ -3,6 +3,8 @@ package com.example.forage.model;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "t_details_devis")
 public class DetailsDevis {
@@ -11,6 +13,7 @@ public class DetailsDevis {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_devis", nullable = false)
     private Devis devis;

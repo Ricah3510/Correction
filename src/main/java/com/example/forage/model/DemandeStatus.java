@@ -19,11 +19,21 @@ public class DemandeStatus {
     @JoinColumn(name = "id_status", nullable = false)
     private Status status;
 
+    @Column(name = "observation")
+    private String observation;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
     public DemandeStatus() {}
-
+    
+    public String getObservation() {
+        return observation;
+    }
+    
+    public void setObservation(String observation) {
+        this.observation = observation;
+    }
     public Integer getId() {
         return id;
     }

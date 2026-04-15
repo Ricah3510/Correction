@@ -19,7 +19,8 @@ public class Demande {
 
     private String lieu;
     private String district;
-
+    
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_client", nullable = false)
     private Client client;

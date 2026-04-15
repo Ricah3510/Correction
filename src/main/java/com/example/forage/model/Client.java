@@ -3,6 +3,8 @@ package com.example.forage.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "t_client")
 public class Client {
@@ -15,7 +17,8 @@ public class Client {
     private String nom;
 
     private String contact;
-
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Demande> demandes;
 

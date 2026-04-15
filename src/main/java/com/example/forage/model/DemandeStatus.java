@@ -3,6 +3,9 @@ package com.example.forage.model;
 import jakarta.persistence.*;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "t_demande_status")
 public class DemandeStatus {
@@ -11,6 +14,7 @@ public class DemandeStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_demande", nullable = false)
     private Demande demande;
@@ -23,6 +27,7 @@ public class DemandeStatus {
     private String observation;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
     private Date date;
 
     public DemandeStatus() {}

@@ -35,7 +35,8 @@
 
     <div class="form-group">
         <label>Demande</label>
-        <select name="demande">
+        <select name="demande" onchange="loadStatus()">
+            <option value="">Selectionner la demande</option>
             <%
             for(Demande d : demandes){
             %>
@@ -72,8 +73,28 @@
 
 </form>
 
+<hr>
+
+<h2>Status actuel</h2>
+<div id="currentStatus"></div>
+
+<h2>Historique</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>Observation</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody id="historyBody"></tbody>
+</table>
+
 </div>
 </div>
+
+<script src="/js/script-demande-status.js"></script>
 
 </body>
 </html>

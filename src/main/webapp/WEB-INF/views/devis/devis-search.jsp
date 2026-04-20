@@ -6,6 +6,7 @@
 List<Demande> demandes = (List<Demande>) request.getAttribute("demandes");
 List<Type> types = (List<Type>) request.getAttribute("types");
 List<Devis> devisList = (List<Devis>) request.getAttribute("devisList");
+Map<Integer, String> statusMap = (Map<Integer, String>) request.getAttribute("statusMap");
 %>
 
 <html>
@@ -22,6 +23,9 @@ List<Devis> devisList = (List<Devis>) request.getAttribute("devisList");
     <a href="/demandes">Demandes</a>
     <a href="/devis">Devis</a>
     <a href="/devis/search" class="active">Voir Devis</a>
+    <a href="/status">Status</a>
+    <a href="/demandes/status">Demande Status</a>
+
 </div>
 
 <div class="main">
@@ -61,6 +65,7 @@ if(devisList != null && !devisList.isEmpty()){
 
 <%
 for(Devis d : devisList){
+    
 %>
 
 <div style="border:1px solid #ccc; padding:15px; margin-bottom:20px;">
@@ -72,6 +77,19 @@ for(Devis d : devisList){
         <b>Type :</b> <%=d.getType().getLibelle()%><br>
         <b>Total :</b> <%=d.getMontantTotal()%>
     </p>
+<p>
+    <b>Status :</b>
+    <%= statusMap.get(d.getId()) %>
+</p>
+<%
+String status = statusMap.get(d.getId());
+boolean isAccepted = status != null && status.toLowerCase().contains("acceptee");
+%>
+<% if(isAccepted){ %>
+    <div style="color:red; font-weight:bold;">
+        Ce devis est accepté — modification interdite
+    </div>
+<% } %>
 
     <table>
         <tr>
@@ -93,6 +111,21 @@ for(Devis d : devisList){
         </tr>
         <%
             }
+        if(!isAccepted){ %>
+
+            <form method="post" action="/devis/status" style="display:inline;">
+                <input type="hidden" name="devisId" value="<%=d.getId()%>">
+                <input type="hidden" name="action" value="accept">
+                <button style="background-color:green; color:white;">Accepter</button>
+            </form>
+
+            <form method="post" action="/devis/status" style="display:inline;">
+                <input type="hidden" name="devisId" value="<%=d.getId()%>">
+                <input type="hidden" name="action" value="refuse">
+                <button style="background-color:red; color:white;">Refuser</button>
+            </form>
+
+        <% }
         }
         %>
 

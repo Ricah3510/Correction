@@ -51,12 +51,17 @@ CREATE TABLE t_demande_status (
     id SERIAL PRIMARY KEY,
     id_demande INT NOT NULL,
     id_status INT NOT NULL,
+    --observation VARCHAR(255),
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_demande) REFERENCES t_demande(id) ON DELETE CASCADE,
     FOREIGN KEY (id_status) REFERENCES t_status(id)
 );
 
+
 CREATE INDEX idx_demande_client ON t_demande(id_client);
 CREATE INDEX idx_devis_demande ON t_devis(id_demande);
 CREATE INDEX idx_details_devis ON t_details_devis(id_devis);
 CREATE INDEX idx_demande_status ON t_demande_status(id_demande);
+
+ALTER TABLE t_demande_status
+ADD COLUMN observation VARCHAR(255);

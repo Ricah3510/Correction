@@ -21,6 +21,9 @@
         <a href="/demandes">Demandes</a>
         <a href="/devis" class="active">Devis</a>
         <a href="/devis/search">Voir Devis</a>
+        <a href="/status">Status</a>
+        <a href="/demandes/status">Demande Status</a>
+
     </div>
 
     <div class="main">
@@ -44,7 +47,8 @@
 
             <label>Demande</label>
 
-            <select id="demandeSelect" name="demande" onfocus="loadDemandeDetails()" onchange="loadDemandeDetails()">
+            <select id="demandeSelect" name="demande" onfocus="loadDemandeDetails()" onchange="loadDemandeDetails();loadDevisIfExists();checkDevisStatus()">
+                <option value="">Selectionner la demande</option>
                 <%
                 for(Demande d : demandes){
                     %>
@@ -60,7 +64,7 @@
 
         <div class="form-group">
             <label>Type</label>
-            <select name="type">
+            <select name="type" onchange="loadDevisIfExists(); checkDevisStatus()">
                 <%
                 for(Type t : types){
                     %>
@@ -81,7 +85,6 @@
 
         <hr>
 
-
         <h2>Détails</h2>
 
         <table>
@@ -91,6 +94,7 @@
                     <th>Qte</th>
                     <th>PU</th>
                     <th>Montant</th>
+                    <%-- <th>Action</th> --%>
                 </tr>
             </thead>
 
@@ -101,6 +105,9 @@
                     <td><input type="number" step="0.01" class="qte" name="qte[]" oninput="calculMontant(this.parentElement.parentElement)"></td>
                     <td><input type="number" step="0.01" class="pu" name="pu[]" oninput="calculMontant(this.parentElement.parentElement)"></td>
                     <td class="montant">0.00</td>
+                    <td>
+                        <button type="button" onclick="removeRow(this)">X</button>
+                    </td>
                 </tr>
 
             </tbody>

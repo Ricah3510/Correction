@@ -9,4 +9,5 @@ public interface DemandeStatusRepository extends JpaRepository<DemandeStatus, In
 
     List<DemandeStatus> findByDemandeIdOrderByDateDesc(Integer demandeId);
     DemandeStatus findTopByDemandeIdOrderByDateDesc(Integer demandeId);
+    DemandeStatus findTopByDemandeIdOrderByIdDesc(Integer demandeId);
 }

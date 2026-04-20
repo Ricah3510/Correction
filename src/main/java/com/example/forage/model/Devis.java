@@ -5,6 +5,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "t_devis")
 public class Devis {
@@ -13,12 +16,14 @@ public class Devis {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_demande", nullable = false)
     private Demande demande;
 
     @ManyToOne
     @JoinColumn(name = "id_type", nullable = false)
+    @JsonIgnoreProperties("deviss")
     private Type type;
 
     // @Column(name = "montant_total")

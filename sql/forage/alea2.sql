@@ -1,0 +1,1 @@
+SELECT SUM (qte * pu) as somme FROM t_details_devis;

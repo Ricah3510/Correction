@@ -4,8 +4,12 @@ INSERT INTO t_type (libelle) VALUES
 
 INSERT INTO t_status (libelle) VALUES
 ('Demande cree'),
-('Devis etude terminee'),
-('Devis forage terminee'),
+('Devis etude cree'),
+('Devis forage cree'),
+('Devis etude acceptee'),
+('Devis forage acceptee'),
+('Devis etude refusee'),
+('Devis forage refusee'),
 ('Etude commencee'),
 ('Etude terminee'),
 ('Forage commence'),

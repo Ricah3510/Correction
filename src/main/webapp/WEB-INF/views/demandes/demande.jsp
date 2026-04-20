@@ -17,6 +17,8 @@
             <a href="/demandes" class="active">Demandes</a>
             <a href="/devis">Devis</a>
             <a href="/devis/search">Voir Devis</a>
+            <a href="/status">Status</a>
+            <a href="/demandes/status">Demande Status</a>
 
         </div>
 

@@ -8,9 +8,12 @@ import com.example.forage.service.DemandeService;
 import com.example.forage.service.DemandeStatusService;
 import com.example.forage.service.DevisService;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,14 +106,14 @@ public class ApiController {
     @GetMapping("/api/demande/status")
     @ResponseBody
     public Map<String, Object> getDemandeStatus(@RequestParam Integer demande) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Map<String, Object> res = new HashMap<>();
 
         List<DemandeStatus> list = demandeStatusService.getHistoriqueStatus(demande);
 
         if (!list.isEmpty()) {
 
-            DemandeStatus current = list.get(0);
+            DemandeStatus current = demandeService.getCurrentStatus(demande);
 
             Map<String, Object> currentMap = new HashMap<>();
             currentMap.put("id", current.getId());
@@ -146,6 +149,17 @@ public class ApiController {
             @RequestParam String observation) {
 
         demandeStatusService.updateObservation(id, observation);
+        return "OK";
+    }
+
+    @PostMapping("/api/demande/status/update-date")
+    @ResponseBody
+    public String updateDate(
+            @RequestParam Integer id,
+            @RequestParam String dateStr) {
+    
+        demandeStatusService.updateDate(id, dateStr);
+    
         return "OK";
     }
 }

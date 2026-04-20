@@ -129,5 +129,6 @@ public class DemandeService {
 
     public DemandeStatus getCurrentStatus(Integer id) {
         return demandeStatusRepository.findTopByDemandeIdOrderByDateDesc(id);
+        // return demandeStatusRepository.findTopByDemandeIdOrderByIdDesc(id);
     }
 }

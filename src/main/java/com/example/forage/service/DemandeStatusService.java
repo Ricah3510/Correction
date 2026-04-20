@@ -1,5 +1,8 @@
 package com.example.forage.service;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -12,8 +15,6 @@ import com.example.forage.repository.DemandeStatusRepository;
 public class DemandeStatusService {
 
     private final DemandeStatusRepository repo;
-
-
 
     public DemandeStatusService(DemandeStatusRepository repo) {
         this.repo = repo;
@@ -35,6 +36,23 @@ public class DemandeStatusService {
                 .orElseThrow(() -> new RuntimeException("Not found"));
     
         ds.setObservation(observation);
+    }
+
+    @Transactional
+    public void updateDate(Integer id, String dateStr) {
+
+        DemandeStatus ds = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Not found"));
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            Date date = sdf.parse(dateStr);
+
+            ds.setDate(date);
+
+        } catch (Exception e) {
+            throw new RuntimeException("Format date invalide : " + dateStr);
+        }
     }
     
 }

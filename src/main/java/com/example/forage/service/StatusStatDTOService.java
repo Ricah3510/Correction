@@ -1,19 +1,16 @@
 package com.example.forage.service;
 
-import com.example.forage.dto.StatusStatDTO;
-import com.example.forage.model.Client;
-import com.example.forage.model.Demande;
-import com.example.forage.model.DemandeStatus;
-import com.example.forage.repository.ClientRepository;
-import com.example.forage.repository.DemandeRepository;
-import com.example.forage.repository.DemandeStatusRepository;
-
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import com.example.forage.dto.StatusStatDTO;
+import com.example.forage.model.Demande;
+import com.example.forage.model.DemandeStatus;
+import com.example.forage.repository.DemandeRepository;
 
 @Service
 public class StatusStatDTOService {

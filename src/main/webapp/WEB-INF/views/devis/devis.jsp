@@ -17,6 +17,7 @@
 
     <div class="sidebar">
         <h2>FORAGE</h2>
+        <a href="/dashboard">Dashboard</a>
         <a href="/clients">Clients</a>
         <a href="/demandes">Demandes</a>
         <a href="/devis" class="active">Devis</a>
@@ -39,6 +40,7 @@
             }
         %>
         <h1>Créer Devis</h1>
+        <h1><a href="/devis/list">Liste</a></h1>
 
         <form method="post" action="/devis">
 

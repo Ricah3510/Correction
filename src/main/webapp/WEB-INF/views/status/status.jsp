@@ -16,7 +16,7 @@
 
     <div class="sidebar">
         <h2>FORAGE</h2>
-
+        <a href="/dashboard">Dashboard</a>
         <a href="/clients">Clients</a>
         <a href="/demandes">Demandes</a>
         <a href="/devis">Devis</a>

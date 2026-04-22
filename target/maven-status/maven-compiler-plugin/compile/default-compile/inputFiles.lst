@@ -45,6 +45,7 @@ D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\service\
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\NoteService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\controller\DemandeController.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\controller\StatusController.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\controller\DashboardController.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\controller\NoteController.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Operateur.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repository\MatiereRepository.java

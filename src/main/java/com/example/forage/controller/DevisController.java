@@ -1,6 +1,7 @@
 package com.example.forage.controller;
 
 import com.example.forage.model.DemandeStatus;
+import com.example.forage.model.DetailsDevis;
 import com.example.forage.model.Devis;
 import com.example.forage.service.*;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -198,4 +200,30 @@ public class DevisController {
         return new ModelAndView("redirect:/devis/search");
     }
 
+    @GetMapping("/devis/list")
+    public ModelAndView listDevis() {
+
+        ModelAndView mv = new ModelAndView("devis/devis-list");
+
+        List<Devis> devisList = devisService.findAll();
+
+        mv.addObject("devisList", devisList);
+
+        return mv;
+    }
+
+    @GetMapping("/devis/{id}")
+    public ModelAndView detailDevis(@PathVariable Integer id) {
+
+        ModelAndView mv = new ModelAndView("devis/devis-detail");
+
+        Devis devis = devisService.findById(id);
+
+        List<DetailsDevis> details = detailsService.findByDevisId(id);
+
+        mv.addObject("devis", devis);
+        mv.addObject("details", details);
+
+        return mv;
+    }
 }

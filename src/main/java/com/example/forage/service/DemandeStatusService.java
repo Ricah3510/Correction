@@ -86,11 +86,11 @@ public class DemandeStatusService {
 
         for (Demande d : demandes) {
 
-            DemandeStatus current = repo
-                    .findTopByDemandeIdOrderByDateDesc(d.getId());
+            DemandeStatus current = getCurrentStatus(d.getId());
+            // DemandeStatus current = repo
+            //         .findTopByDemandeIdOrderByDateDesc(d.getId());
 
-            if (current != null &&
-                current.getStatus().getId().equals(statusId)) {
+            if (current != null && current.getStatus().getId().equals(statusId)) {
 
                 result.add(d);
             }

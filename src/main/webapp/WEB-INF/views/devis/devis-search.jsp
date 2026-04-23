@@ -19,6 +19,7 @@ Map<Integer, String> statusMap = (Map<Integer, String>) request.getAttribute("st
 
 <div class="sidebar">
     <h2>FORAGE</h2>
+    <a href="/dashboard">Dashboard</a>
     <a href="/clients">Clients</a>
     <a href="/demandes">Demandes</a>
     <a href="/devis">Devis</a>
@@ -86,9 +87,9 @@ String status = statusMap.get(d.getId());
 boolean isAccepted = status != null && status.toLowerCase().contains("acceptee");
 %>
 <% if(isAccepted){ %>
-    <div style="color:red; font-weight:bold;">
+    <%-- <div style="color:red; font-weight:bold;">
         Ce devis est accepté — modification interdite
-    </div>
+    </div> --%>
 <% } %>
 
     <table>
@@ -113,7 +114,7 @@ boolean isAccepted = status != null && status.toLowerCase().contains("acceptee")
             }
         if(!isAccepted){ %>
 
-            <form method="post" action="/devis/status" style="display:inline;">
+            <%-- <form method="post" action="/devis/status" style="display:inline;">
                 <input type="hidden" name="devisId" value="<%=d.getId()%>">
                 <input type="hidden" name="action" value="accept">
                 <button style="background-color:green; color:white;">Accepter</button>
@@ -123,7 +124,7 @@ boolean isAccepted = status != null && status.toLowerCase().contains("acceptee")
                 <input type="hidden" name="devisId" value="<%=d.getId()%>">
                 <input type="hidden" name="action" value="refuse">
                 <button style="background-color:red; color:white;">Refuser</button>
-            </form>
+            </form> --%>
 
         <% }
         }

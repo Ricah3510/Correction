@@ -12,6 +12,7 @@
 
         <div class="sidebar">
             <h2>FORAGE</h2>
+            <a href="/dashboard">Dashboard</a>
             <a href="/clients" class="active">Clients</a>
             <a href="/demandes">Demandes</a>
             <a href="/devis">Devis</a>
@@ -57,7 +58,7 @@
             if(clients != null){
                 for(Client c : clients){
                     %>
-                    <tr>
+                    <tr onclick="window.location='/clients/<%=c.getId()%>'" style="cursor:pointer;">
                         <td><%=c.getId()%></td>
                         <td><%=c.getNom()%></td>
                         <td><%=c.getContact()%></td>

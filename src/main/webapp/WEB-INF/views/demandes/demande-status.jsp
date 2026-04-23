@@ -5,6 +5,7 @@
 <%
     List<Demande> demandes = (List<Demande>) request.getAttribute("demandes");
     List<Status> statuses = (List<Status>) request.getAttribute("statuses");
+    String selectedDemande = request.getParameter("demande");
 %>
 
 <html>
@@ -17,7 +18,7 @@
 
 <div class="sidebar">
     <h2>FORAGE</h2>
-
+    <a href="/dashboard">Dashboard</a>
     <a href="/clients">Clients</a>
     <a href="/demandes">Demandes</a>
     <a href="/devis">Devis</a>
@@ -40,7 +41,12 @@
             <%
             for(Demande d : demandes){
             %>
-                <option value="<%=d.getId()%>">
+                <%-- <option value="<%=d.getId()%>">
+                    Demande <%=d.getId()%> - <%=d.getLieu()%>
+                </option> --%>
+                <option value="<%=d.getId()%>"
+                    <%= (selectedDemande != null && selectedDemande.equals(String.valueOf(d.getId()))) ? "selected" : "" %>>
+                    
                     Demande <%=d.getId()%> - <%=d.getLieu()%>
                 </option>
             <%
@@ -98,3 +104,13 @@
 
 </body>
 </html>
+<script>
+window.onload = function(){
+
+    const select = document.querySelector("select[name='demande']");
+
+    if(select && select.value){
+        loadStatus();
+    }
+}
+</script>

@@ -92,6 +92,8 @@
             <th>Status</th>
             <th>Observation</th>
             <th>Date</th>
+            <th>Durée Pleine</th>
+            <th>Durée Ouverte</th>
         </tr>
     </thead>
     <tbody id="historyBody"></tbody>
@@ -113,4 +115,5 @@ window.onload = function(){
         loadStatus();
     }
 }
+
 </script>

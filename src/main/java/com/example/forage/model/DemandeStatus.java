@@ -1,8 +1,11 @@
 package com.example.forage.model;
 
 import jakarta.persistence.*;
+
+import java.time.Duration;
 import java.util.Date;
 
+import com.example.forage.dto.DurationConverter;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,6 +32,30 @@ public class DemandeStatus {
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
     private Date date;
+
+    @Column(name = "dureeplein")
+    @Convert(converter = DurationConverter.class)
+    private Duration dureePlein;
+
+    @Column(name = "dureeouvert")
+    @Convert(converter = DurationConverter.class)
+    private Duration dureeOuvert;
+    
+    public Duration getDureePlein() {
+        return dureePlein;
+    }
+
+    public void setDureePlein(Duration dureePlein) {
+        this.dureePlein = dureePlein;
+    }
+
+    public Duration getDureeOuvert() {
+        return dureeOuvert;
+    }
+
+    public void setDureeOuvert(Duration dureeOuvert) {
+        this.dureeOuvert = dureeOuvert;
+    }
 
     public DemandeStatus() {}
     

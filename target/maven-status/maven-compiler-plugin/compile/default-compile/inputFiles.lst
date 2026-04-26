@@ -25,11 +25,13 @@ D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\model\Ty
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\model\Demande.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\Note.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repository\CandidatRepository.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\repository\ParametreRepository.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\model\DetailsDevis.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\repository\DemandeStatusRepository.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\service\StatusService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\CorrectionApplication.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\repository\ParametreRepository.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\dto\DurationConverter.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\repository\DemandeRepository.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\model\NoteFinal.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\service\DemandeStatusService.java
@@ -43,6 +45,7 @@ D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\model\De
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\model\Status.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\repository\TypeRepository.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\service\DemandeService.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\dto\Util.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\NoteService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\controller\DemandeController.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\controller\StatusController.java
@@ -57,4 +60,5 @@ D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\reposito
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\correction\service\ParametreService.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\repository\ClientRepository.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\repository\DetailsDevisRepository.java
+D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\model\Parametre.java
 D:\S6\FRAMEWORK\SPRING-BOOT\Correction\src\main\java\com\example\forage\repository\DevisRepository.java

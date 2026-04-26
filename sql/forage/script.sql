@@ -57,7 +57,6 @@ CREATE TABLE t_demande_status (
     FOREIGN KEY (id_status) REFERENCES t_status(id)
 );
 
-
 CREATE INDEX idx_demande_client ON t_demande(id_client);
 CREATE INDEX idx_devis_demande ON t_devis(id_demande);
 CREATE INDEX idx_details_devis ON t_details_devis(id_devis);
@@ -65,3 +64,23 @@ CREATE INDEX idx_demande_status ON t_demande_status(id_demande);
 
 ALTER TABLE t_demande_status
 ADD COLUMN observation VARCHAR(255);
+
+ALTER TABLE t_demande_status
+ADD COLUMN dureePlein INTERVAL;
+
+ALTER TABLE t_demande_status
+ADD COLUMN dureeOuvert INTERVAL;
+
+
+ALTER TABLE t_demande_status
+ALTER COLUMN dureeplein SET DEFAULT NULL;
+
+ALTER TABLE t_demande_status
+ALTER COLUMN dureeouvert SET DEFAULT NULL;
+
+
+CREATE TABLE t_parametre (
+    id SERIAL PRIMARY KEY,
+    heure_debut TIME NOT NULL,
+    heure_fin TIME NOT NULL
+);

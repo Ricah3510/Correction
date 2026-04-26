@@ -1,3 +1,17 @@
+function extractSeconds(str) {
+    if (!str) return 0;
+    return parseInt(str.split(" ")[0]);
+}
+
+function formatDuration(seconds) {
+    if (seconds == null) return "";
+
+    let hours = Math.floor(seconds / 3600);
+    let minutes = Math.floor((seconds % 3600) / 60);
+
+    return hours + "h " + minutes + "min";
+}
+
 function loadStatus() {
 
     let demande = document.querySelector("select[name='demande']").value;
@@ -51,7 +65,8 @@ function loadStatus() {
                             onblur="updateDate(${s.id}, this.value)"
                         >
                     </td>
-
+                    <td>${formatDuration(s.dureePlein)}</td>
+                    <td>${formatDuration(s.dureeOuvert)}</td>
                 `;
 
                 body.appendChild(row);
@@ -105,3 +120,4 @@ function formatDateForInput(dateStr) {
 
     return iso.substring(0, 16);
 }
+

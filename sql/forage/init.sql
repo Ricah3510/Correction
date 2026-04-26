@@ -19,3 +19,5 @@ INSERT INTO t_status (libelle) VALUES
 ('Projet interrompu'),
 ('Eau buvable');
 
+INSERT INTO t_parametre (heure_debut, heure_fin)
+VALUES ('08:00', '17:00');

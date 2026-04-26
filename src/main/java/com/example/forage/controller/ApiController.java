@@ -120,6 +120,12 @@ public class ApiController {
             currentMap.put("status", current.getStatus().getLibelle());
             currentMap.put("observation", current.getObservation());
             currentMap.put("date", sdf.format(current.getDate()));
+            // currentMap.put("dureePlein",
+            //     current.getDureePlein() != null ? current.getDureePlein().getSeconds() : null);
+
+            // currentMap.put("dureeOuvert",
+            //     current.getDureeOuvert() != null ? current.getDureeOuvert().getSeconds() : null);
+
 
             res.put("current", currentMap);
         }
@@ -133,6 +139,11 @@ public class ApiController {
             m.put("status", ds.getStatus().getLibelle());
             m.put("observation", ds.getObservation());
             m.put("date", sdf.format(ds.getDate()));
+            m.put("dureePlein",
+                ds.getDureePlein() != null ? ds.getDureePlein().getSeconds() : null);
+
+            m.put("dureeOuvert",
+                ds.getDureeOuvert() != null ? ds.getDureeOuvert().getSeconds() : null);
 
             history.add(m);
         }

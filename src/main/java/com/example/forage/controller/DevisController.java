@@ -54,7 +54,7 @@ public class DevisController {
     }
 
 
-    @PostMapping("/devis0")
+    @PostMapping("/devis")
     public ModelAndView saveDevis0(
             @RequestParam Integer demande,
             @RequestParam Integer type,
@@ -81,7 +81,7 @@ public class DevisController {
                 }
     }
 
-    @PostMapping("/devis")
+    @PostMapping("/devis0")
     public ModelAndView saveDevis(
             @RequestParam Integer demande,
             @RequestParam Integer type,
